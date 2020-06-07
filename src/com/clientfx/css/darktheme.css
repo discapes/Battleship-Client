@@ -26,3 +26,19 @@
 .button:hover    {
 	-fx-background-color: #282828;
 }
+
+#grids .button:hover    {
+	-fx-background-color: #282828;
+}
+
+#grids .button {
+	-fx-background-radius: 7.0;
+	-fx-background-color: #545454;
+	-fx-border-color: #efefef;
+	-fx-text-fill: #efefef;
+	-fx-border-radius: 7.0;
+	-fx-font-family: "Segoe UI Semilight";
+	-fx-font-size: 18.0
+}
+
+

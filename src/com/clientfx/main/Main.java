@@ -1,19 +1,28 @@
 package com.clientfx.main;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 import com.clientfx.confirmbox.ConfirmBox;
 import com.clientfx.intro.Intro;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import sdk.BattleshipGame;
+import sdk.BattleshipGameInterface;
 
 public class Main extends Application
 {
 
 	private static final String TITLE = "Battleship";
-
-	public static void main(String[] args)
+	private static BattleshipGameInterface game;
+	public static BattleshipGameInterface getGame() { return game; }
+	private Socket socket;
+	
+	public static void main(String[] args) throws UnknownHostException, IOException
 	{
 		launch(args);
 	}
@@ -21,6 +30,11 @@ public class Main extends Application
 	@Override
 	public void start(Stage mainStage) throws IOException
 	{
+		socket = new Socket("localhost", 4444);
+		PrintWriter stringOut = new PrintWriter(socket.getOutputStream(), true);
+		ObjectInputStream oIn = new ObjectInputStream(socket.getInputStream());
+		
+		game = new BattleshipGame(stringOut, oIn);
 		mainStage.setTitle(TITLE);
 		ConfirmBox confirmBox = new ConfirmBox();
 		mainStage.setOnCloseRequest(e -> {
@@ -39,5 +53,10 @@ public class Main extends Application
 		intro.setScene(mainStage);
 
 		mainStage.show();
+	}
+	
+	@Override
+	public void stop() throws IOException {
+		socket.close();
 	}
 }
