@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 
 public class GameController
@@ -30,15 +31,20 @@ public class GameController
 
 	void initGrid(int cols, int rows) {
 		for (int i = 0; i < cols; i++) {
-			leftgrid.getColumnConstraints().add(new ColumnConstraints());
+			ColumnConstraints cc = new ColumnConstraints();
+			cc.setHgrow(Priority.ALWAYS);
+			leftgrid.getColumnConstraints().add(cc);
 		}
 		for (int i = 0; i < rows; i++) {
-			leftgrid.getRowConstraints().add(new RowConstraints());
+			RowConstraints rc = new RowConstraints();
+			rc.setVgrow(Priority.ALWAYS);
+			leftgrid.getRowConstraints().add(rc);
 		}
 		for (int x = 0; x < cols; x++) {
 			for (int y = 0; y < rows; y++) {
 				Button button = new Button();
 				GridPane.setConstraints(button, x, y);
+				button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 				leftgrid.getChildren().add(button);
 				button.setOnAction(new EventHandler<ActionEvent>() {
 					@Override public void handle(ActionEvent arg0) {
