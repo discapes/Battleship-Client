@@ -26,10 +26,10 @@ public class GameController
 		PrintStream ps = new PrintStream(new Console(console));
 		System.setOut(ps);
 		System.setErr(ps);
-		initGrid(5, 5);
+		initGrids(5, 5);
 	}
 
-	void initGrid(int cols, int rows) {
+	void initGrids(int cols, int rows) {
 		for (int i = 0; i < cols; i++) {
 			ColumnConstraints cc = new ColumnConstraints();
 			cc.setHgrow(Priority.ALWAYS);
@@ -56,6 +56,27 @@ public class GameController
 						}
 					}
 				});
+			}
+		}
+		
+		
+		for (int i = 0; i < cols; i++) {
+			ColumnConstraints cc = new ColumnConstraints();
+			cc.setHgrow(Priority.ALWAYS);
+			rightgrid.getColumnConstraints().add(cc);
+		}
+		for (int i = 0; i < rows; i++) {
+			RowConstraints rc = new RowConstraints();
+			rc.setVgrow(Priority.ALWAYS);
+			rightgrid.getRowConstraints().add(rc);
+		}
+		for (int x = 0; x < cols; x++) {
+			for (int y = 0; y < rows; y++) {
+				Button button = new Button();
+				button.setDisable(true);
+				GridPane.setConstraints(button, x, y);
+				button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+				rightgrid.getChildren().add(button);
 			}
 		}
 	}

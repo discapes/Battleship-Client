@@ -23,6 +23,26 @@
 	-fx-font-size: 18.0
 }
 
+.text-area .content {
+	-fx-background-color: dimgrey;
+}
+
+.text-area {
+	-fx-text-fill: azure;
+	-fx-background-color: azure;
+	-fx-highlight-fill: dimgrey;
+}
+
+.text-area:focused {
+    -fx-background-color: azure;
+    -fx-highlight-fill: dimgrey;
+}
+
+.text-area:hover {
+    -fx-background-color: azure;
+    -fx-highlight-fill: dimgrey;
+}
+
 .button:hover    {
 	-fx-background-color: #282828;
 }
