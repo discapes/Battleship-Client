@@ -13,4 +13,8 @@ public interface BattleshipGameInterface
 	int getTotalNumOfMissiles();
 	
 	String getMissileSiloType();
+
+	int getMissileIDAt(int index);
+
+	int getCurrentMissileID();
 }

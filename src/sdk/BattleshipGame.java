@@ -29,6 +29,10 @@ public class BattleshipGame implements BattleshipGameInterface
 		{
 			e.printStackTrace();
 		}
+		if (hits == null) { 
+			System.out.println("null");
+			return new HashSet<int[]>();
+		}
 	   	return hits;
 	}
 
@@ -76,11 +80,48 @@ public class BattleshipGame implements BattleshipGameInterface
 		}
 	   	return num;
 	}
+	
+	@Override
+	public int getMissileIDAt(int index)
+	{
+	   	stringOut.println("getMissileIDAt int:" + index);
+	   	int num = -1;
+		try
+		{
+			num = (int) oIn.readObject();
+		} catch (ClassNotFoundException | IOException e)
+		{
+			e.printStackTrace();
+		}
+	   	return num;
+	}
+	
+	@Override
+	public int getCurrentMissileID()
+	{
+	   	stringOut.println("getCurrentMissileID");
+	   	int num = -1;
+		try
+		{
+			num = (int) oIn.readObject();
+		} catch (ClassNotFoundException | IOException e)
+		{
+			e.printStackTrace();
+		}
+	   	return num;
+	}
 
 	@Override
 	public void setCurrentMissile(int missileType)
 	{
 	   	stringOut.println("setCurrentMissile int:" + missileType);
+		try
+		{
+			oIn.readObject();
+		} catch (ClassNotFoundException | IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Override
