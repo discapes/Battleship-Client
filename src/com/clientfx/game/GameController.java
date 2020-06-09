@@ -39,7 +39,7 @@ public class GameController
 
 	public void initialize()
 	{
-		initGrids(10, 10);
+		initGrids(Main.getGame().getCols(), Main.getGame().getRows());
 		initMissiles(Main.getGame().getMissileSiloType());
 		PrintStream ps = new PrintStream(new Console(console));
 		System.setOut(ps);

@@ -154,4 +154,34 @@ public class BattleshipGame implements BattleshipGameInterface
 	   	return type;
 	}
 
+	@Override
+	public int getCols()
+	{
+		stringOut.println("getCols");
+	   	int num = -1;
+		try
+		{
+			num = (int) oIn.readObject();
+		} catch (ClassNotFoundException | IOException e)
+		{
+			e.printStackTrace();
+		}
+	   	return num;
+	}
+
+	@Override
+	public int getRows()
+	{
+		stringOut.println("getRows");
+	   	int num = -1;
+		try
+		{
+			num = (int) oIn.readObject();
+		} catch (ClassNotFoundException | IOException e)
+		{
+			e.printStackTrace();
+		}
+	   	return num;
+	}
+
 }
