@@ -1,2 +1,2 @@
 # Battleship-Client
-Battleship game. Requires https://github.com/discapes/Battleship-Server.
+Graphical battleship game written with JavaFX. Requires https://github.com/discapes/Battleship-Server.
